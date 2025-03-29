@@ -1,0 +1,56 @@
+" ----------- Ordered Collection ------ "
+
+myArray :=  Array with: 5 with: 4 with: 3 with: 2.
+myArray size.
+myArray add: 1 
+
+myOrderedCollection := OrderedCollection new.
+myOrderedCollection add: 1.
+myOrderedCollection add: 2. 
+myOrderedCollection 
+
+
+"------------ Closure ------------ "
+sumar := [:parameter1 :parameter2 | parameter1 + parameter2].
+sumar value: 2 value: 4.
+
+
+"------------Closures en coleccion------------"
+
+| elements index odds sumar |
+
+elements:= #(1 2 5 6 9).
+
+odds := OrderedCollection new.
+index := 1.
+
+[index <= elements size]
+whileTrue: [
+	((elements at: index) odd) ifTrue: [odds add: (elements at: index)].
+	index := index +1.
+	].
+odds.
+
+
+
+odds2 := elements select: [:currentElement | currentElement odd].
+odds2.
+
+"------------Unidades ----------------"
+
+pizza := BaseUnit nameForOne: 'pizza' nameForMany: 'pizzas'.
+
+bitcoin := ProportionalDerivedUnit baseUnit: pizza conversionFactor:
+1/5000 named: 'bitcoin'.
+
+(10000 * bitcoin) convertTo: pizza.
+
+" ---------- Dates ------------"
+
+DateAndTime now.
+
+Time now.
+Time now minute.
+Time now second.
+
+DateAndTime now < (DateAndTime now + (Duration days:1))
