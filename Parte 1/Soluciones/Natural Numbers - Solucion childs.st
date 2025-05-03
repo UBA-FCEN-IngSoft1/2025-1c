@@ -84,27 +84,43 @@ II class
 
 !II class methodsFor: 'next & previous' stamp: 'JFGO 3/29/2023 20:25:36'!
 nameOfNext
-	(self name endsWith: 'III') ifTrue:[^(self name withoutSuffix: 'III'), 'IV'].
-	(self name endsWith: 'IV') ifTrue:[^(self name withoutSuffix: 'IV'), 'V'].
-	(self name endsWith: 'VIII') ifTrue:[^(self name withoutSuffix: 'VIII'), 'IX'].
-	(self name endsWith: 'IX') ifTrue:[^(self name withoutSuffix: 'IX'), 'X'].
-	"Hasta aca ya nos anda hasta el 39 solito (por ende, a cualquier numero grande romano, podemos sumarle 39)"
-	
-	(self name endsWith: 'XXXIX') ifTrue:[^(self name withoutSuffix: 'XXXIX'), 'XL'].
-	(self name endsWith: 'XLIX') ifTrue:[^(self name withoutSuffix: 'XLIX'), 'L'].
-	"Hasta aca ya nos anda hasta el 89 solito"
-	
-	(self name endsWith: 'LXXXIX') ifTrue:[^(self name withoutSuffix: 'LXXXIX'), 'XC'].
-	(self name endsWith: 'XCIX') ifTrue:[^(self name withoutSuffix: 'XCIX'), 'C'].
-	"Hasta aca ya nos anda hasta el 399 solito"
-	
-	(self name endsWith: 'CCCXCIX') ifTrue:[^(self name withoutSuffix: 'CCCXCIX'), 'CD'].
-	(self name endsWith: 'CDXCIX') ifTrue:[^(self name withoutSuffix: 'CDXCIX'), 'D'].
-	"Hasta aca ya nos anda hasta el 899 solito"
-	
-	(self name endsWith: 'DCCCXCIX') ifTrue:[^(self name withoutSuffix: 'DCCCXCIX'), 'CM'].
+	"Si termino en 999, poner M (1000)"
 	(self name endsWith: 'CMXCIX') ifTrue:[^(self name withoutSuffix: 'CMXCIX'), 'M'].
 	
+	"Si termino en 899, poner CM (900)"
+	(self name endsWith: 'DCCCXCIX') ifTrue:[^(self name withoutSuffix: 'DCCCXCIX'), 'CM'].
+	
+	"Si termino en 499, poner D (500)"
+	(self name endsWith: 'CDXCIX') ifTrue:[^(self name withoutSuffix: 'CDXCIX'), 'D'].
+	
+	"Si termino en 399, poner CD (400)"
+	(self name endsWith: 'CCCXCIX') ifTrue:[^(self name withoutSuffix: 'CCCXCIX'), 'CD'].
+	
+	"Si termino en 99, poner C (100)"
+	(self name endsWith: 'XCIX') ifTrue:[^(self name withoutSuffix: 'XCIX'), 'C'].
+	
+	"Si termino en 89, poner XC (90)"
+	(self name endsWith: 'LXXXIX') ifTrue:[^(self name withoutSuffix: 'LXXXIX'), 'XC'].
+	
+	"Si termino en 49, poner L (50)"
+	(self name endsWith: 'XLIX') ifTrue:[^(self name withoutSuffix: 'XLIX'), 'L'].
+	
+	"Si termino en 39, poner XL (40)"
+	(self name endsWith: 'XXXIX') ifTrue:[^(self name withoutSuffix: 'XXXIX'), 'XL'].
+	
+	"Si termino en 9, poner X (10)"
+	(self name endsWith: 'IX') ifTrue:[^(self name withoutSuffix: 'IX'), 'X'].
+	
+	"Si termino en 8, poner IX (9)"
+	(self name endsWith: 'VIII') ifTrue:[^(self name withoutSuffix: 'VIII'), 'IX'].
+	
+	"Si termino en 4, poner V (5)"
+	(self name endsWith: 'IV') ifTrue:[^(self name withoutSuffix: 'IV'), 'V'].
+	
+	"Si termino en 3, poner IV (4)"
+	(self name endsWith: 'III') ifTrue:[^(self name withoutSuffix: 'III'), 'IV'].
+	
+	"Si no, poner I (1)"
 	^ self name, 'I'! !
 
 !II class methodsFor: 'next & previous' stamp: 'JFGO 3/29/2023 20:01:27'!
